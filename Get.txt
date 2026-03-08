@@ -1,0 +1,4 @@
+TELEGRAM_TOKEN = your_token_here
+​SUPABASE_URL = your_url_here
+​SUPABASE_KEY = your_key_here
+​GEMINI_KEY = your_ai_key_here
