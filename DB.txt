@@ -1,0 +1,41 @@
+CREATE TABLE profiles (
+  id BIGINT PRIMARY KEY,
+  username TEXT,
+  bio TEXT,
+  interests TEXT,
+  personality TEXT,
+  conversation_style TEXT,
+  referral_code TEXT,
+  referred_by TEXT,
+  premium BOOLEAN DEFAULT FALSE,
+  is_searching BOOLEAN DEFAULT TRUE,
+  is_taken BOOLEAN DEFAULT FALSE,
+  current_partner_id BIGINT,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE referrals (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  referrer BIGINT,
+  referred BIGINT,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE payments (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id BIGINT,
+  amount INT,
+  status TEXT,
+  paystack_reference TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE match_history (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_a BIGINT,
+  user_b BIGINT,
+  compatibility_score INT,
+  ai_reason TEXT,
+  status TEXT DEFAULT 'active',
+  matched_at TIMESTAMP DEFAULT NOW()
+);
